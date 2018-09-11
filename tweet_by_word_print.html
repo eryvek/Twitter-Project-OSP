@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <title>Twitter Sentiment Analysis</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+  <body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Tweet Analysis</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'tweet_by_word_input' %}">Extract Tweet by Word</a></li>
+      <li><a href="#">Extract Tweets from User</a></li>
+    </ul>
+  </div>
+</nav>
+    <h1>Tweets</h1>
+
+    {% for a,b in tweet_info %}
+        {% if b.polarity > 0 %}
+           <p style = "font-size: small">{{ a }}</p>
+
+            <h3>Positive {{ b.polarity }}</h3>
+            <br><br>
+        {% endif %}
+        {% if b.polarity < 0 %}
+            <p style = "font-size: small">{{ a }}</p>
+
+            <h3>Negative {{ b.polarity }}</h3>
+            <br><br>
+        {% endif %}
+        {% if b.polarity == 0 %}
+           <p style = "font-size: small">{{ a }}</p>
+
+            <h3>Neutral {{ b.polarity }}<h3>
+            <br><br>
+        {% endif %}
+    {% endfor %}
+
+    <br><br>
+  <form name = "form" action = "{% url 'home' %}">
+        <button style = "border:0px; background-color:#4285F4;" type = "submit" value = "Another Search" >
+            <strong>Another Search</strong>
+        </button>
+  </form>
+  </body>
+</html>
