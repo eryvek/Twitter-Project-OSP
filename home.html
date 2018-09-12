@@ -7,6 +7,50 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+    <style>
+        body{
+            background-image: url("https://images.pexels.com/photos/875858/pexels-photo-875858.png?auto=compress&cs=tinysrgb&h=350");
+            background-size: 100%;
+            overflow-x: hidden;
+        }
+        #fb{
+            position:relative;
+            top:150px;
+            left:18%;
+            transition:0.25s;
+        }
+        #insta{
+            position:relative;
+            top:150px;
+            left:43%;
+            transition:0.25s;
+        }
+        #twitter{
+            position:relative;
+            top:150px;
+            left:68%;
+            transition:0.25s;
+        }
+        #follow{
+            position:relative;
+            padding-top:10%;
+            left:35%;
+            font-family: Candara;
+        }
+        #fb:hover{
+            transition:0.25s;
+            top:145px;
+        }
+        #insta:hover{
+            transition:0.25s;
+            top:145px;
+        }
+        #twitter:hover{
+            transition:0.25s;
+            top:145px;
+        }
+    </style>
 </head>
 <body>
 
@@ -18,10 +62,14 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="{% url 'home' %}">Home</a></li>
       <li><a href="{% url 'tweet_by_word_input' %}">Extract Tweet by Word</a></li>
-      <li><a href="#">Extract Tweets from User</a></li>
+      <li><a href="{% url 'tweet_by_user_input' %}">Extract Tweets from User</a></li>
     </ul>
   </div>
 </nav>
+    <h1 id = "follow" class="animated fadeInDown">Follow on Social Media</h1>
+    <a href="https://www.facebook.com/profile.php?id=100001341445076"><img class="animated fadeInDown" id = "fb" src = "https://en.facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png" width="50px" height="50px"/></a>
+    <a href = "https://www.instagram.com/"><img class="animated fadeInDown" id = "insta" src = "https://sguru.org/wp-content/uploads/2018/01/Instagram-PNG-Free-Download.png" width="50px" height="50px"/></a>
+    <a href="https://twitter.com/"><img class="animated fadeInDown" id = "twitter" src = "https://sguru.org/wp-content/uploads/2018/02/twitter-icon-square-logo-preview.png" width="50px" height="50px"/></a>
 
 </body>
 </html>
