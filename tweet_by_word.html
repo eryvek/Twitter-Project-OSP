@@ -5,11 +5,47 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body{
+            background-image: url("https://images.pexels.com/photos/875858/pexels-photo-875858.png?auto=compress&cs=tinysrgb&h=350");
+            background-size: 100%;
+        }
+        #search_box{
+            border:1px solid black;
+            padding-left: 1%;
+            padding-right: 1%;
+            padding-top: 3%;
+            padding-bottom: 3%;
+            width:30%;
+            transition:1s;
+            border-radius:10px;
+            box-shadow: 1px 1px 30px 10px rgba(0, 0, 0, 0.6);
+
+        }
+        #search_box:hover{
+            transform:scale(1.15);
+            transition:1s;
+            background:rgba(255,255,255,0.6);
+        }
+        #btn{
+            background-color: #4285F4;
+            border-radius: 4px;
+            width:25%;
+            height:5%;
+            border:0.5px solid blue
+
+        }
+        #tweet_tag{
+            border-radius: 5px;
+            height:30px;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -18,18 +54,21 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="{% url 'home' %}">Home</a></li>
       <li><a href="{% url 'tweet_by_word_input' %}">Extract Tweet by Word</a></li>
-      <li><a href="#">Extract Tweets from User</a></li>
+      <li><a href="{% url 'tweet_by_user_input' %}">Extract Tweets from User</a></li>
     </ul>
   </div>
 </nav>
-
-<div class="container">
-  <form name = "form" action = "{% url 'tweet_by_word_print' %}"
+<br>
+<br>
+<center>
+<div id = "search_box" class="animated fadeInDown">
+  <form style="opacity: 0.9" name = "form" action = "{% url 'tweet_by_word_print' %}"
          method = "POST" >{% csrf_token %}
-         <input type = "text" placeholder = "Tweet Tag" name = "tweet_tag" />
-         <button style = "border:0px; background-color:#4285F4" type = "submit" value = "Login" ><strong>Search</strong></button>
+         <input id = "tweet_tag" type = "text" placeholder = "Tweet Tag" name = "tweet_tag" /><br/><br/>
+         <input type="submit" id = "btn" value = "Search" >
   </form>
 </div>
+</center></center>
 
 </body>
 </html>
