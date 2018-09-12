@@ -29,6 +29,4 @@ def tweet_by_word(request):
         analysis = TextBlob(tweet.full_text)
         analysis_list.append(analysis.sentiment)
         tweet_info = zip(tweet_list,analysis_list)
-    '''for a,b in tweet_info:
-        print(a,b)'''
     return render(request, 'tweet_by_word_print.html', {'tweet_info': tweet_info})
