@@ -7,8 +7,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <style>
+          body{
+            background-image: url("https://images.pexels.com/photos/242236/pexels-photo-242236.jpeg?auto=compress&cs=tinysrgb&h=350");
+            background-size: cover;
+        }
+      </style>
   </head>
-  <body>
   <body>
 
 <nav class="navbar navbar-default">
@@ -19,38 +24,34 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="{% url 'home' %}">Home</a></li>
       <li><a href="{% url 'tweet_by_word_input' %}">Extract Tweet by Word</a></li>
-      <li><a href="#">Extract Tweets from User</a></li>
+      <li><a href="{% url 'tweet_by_user_input' %}">Extract Tweets from User</a></li>
     </ul>
   </div>
 </nav>
-    <h1>Tweets</h1>
-
+    <h2>Tweets</h2>
+<div class="container-fluid">
     {% for a,b in tweet_info %}
         {% if b.polarity > 0 %}
-           <p style = "font-size: small">{{ a }}</p>
+           <p style = "font-size: medium">{{ a }}</p>
 
-            <h3>Positive {{ b.polarity }}</h3>
+            <h4>Positive {{ b.polarity }}</h4>
             <br><br>
         {% endif %}
         {% if b.polarity < 0 %}
-            <p style = "font-size: small">{{ a }}</p>
+            <p style = "font-size: medium">{{ a }}</p>
 
-            <h3>Negative {{ b.polarity }}</h3>
+            <h4>Negative {{ b.polarity }}</h4>
             <br><br>
         {% endif %}
         {% if b.polarity == 0 %}
-           <p style = "font-size: small">{{ a }}</p>
+           <p style = "font-size: medium">{{ a }}</p>
 
-            <h3>Neutral {{ b.polarity }}<h3>
+            <h4>Neutral {{ b.polarity }}</h4>
             <br><br>
         {% endif %}
     {% endfor %}
-
+</div>>
     <br><br>
-  <form name = "form" action = "{% url 'home' %}">
-        <button style = "border:0px; background-color:#4285F4;" type = "submit" value = "Another Search" >
-            <strong>Another Search</strong>
-        </button>
-  </form>
+
   </body>
 </html>
